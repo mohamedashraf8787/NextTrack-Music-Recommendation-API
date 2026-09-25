@@ -141,3 +141,21 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+# Dependencies
+node_modules/
+
+# Private browser profiles
+.chrome-profile/
+.chrome-profile-dom/
+tmp-chrome-profile/
+tmp-edge-profile/
+
+# Local music collection
+public/music/
+*.mp3
+*.wav
+
+# Environment and temporary files
+.env
+.env.*
+*.log

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NextTrack</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <section class="brand-card panel">
+          <div class="brand-block">
+            <div class="brand-mark" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div>
+              <h1>NextTrack</h1>
+              <p>Music that moves with you.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="sidebar-panel panel">
+          <div class="section-head compact">
+            <div>
+              <h2>Queue</h2>
+              <p id="queue-caption">Queue the songs you want to hear next.</p>
+            </div>
+            <button id="clear-session" class="ghost-button" type="button">Clear</button>
+          </div>
+          <div id="queue-summary" class="summary-row"></div>
+          <div id="session-list" class="queue-list"></div>
+        </section>
+
+        <section class="sidebar-panel panel">
+          <div class="section-head compact sidebar-action-head">
+            <div>
+              <h3>Up next for you</h3>
+              <p id="recommendation-copy">Start a queue, then ask NextTrack for the next pick.</p>
+            </div>
+            <button id="recommend-button" class="primary-button" type="button">Keep the vibe going</button>
+          </div>
+          <div id="recommendations" class="recommendation-list empty-state">
+            Add songs to your queue to see the next recommendations here.
+          </div>
+        </section>
+
+        <section id="passive-suggestion" class="suggestion panel hidden">
+          <div class="suggestion-copy">
+            <strong id="suggestion-title"></strong>
+            <p id="suggestion-message"></p>
+          </div>
+          <button id="suggestion-action" class="secondary-button" type="button">Start journey</button>
+        </section>
+      </aside>
+
+      <main class="main-shell">
+        <header class="topbar panel">
+          <div class="search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.8"></circle>
+              <path d="M16 16L21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+            </svg>
+            <input id="library-search" type="search" placeholder="Search your songs, artists, or moods" />
+          </div>
+          <button id="open-journey" class="secondary-button" type="button">Mood journey</button>
+        </header>
+
+        <section class="hero-card panel">
+          <div id="now-playing" class="hero-content"></div>
+        </section>
+
+        <section class="library-card panel">
+          <div class="section-head">
+            <div>
+              <h3>Your music</h3>
+              <p id="library-caption">Songs found in your project music folder.</p>
+            </div>
+          </div>
+          <div id="library" class="library-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="mini-player" class="mini-player"></div>
+    <audio id="audio-player" preload="metadata"></audio>
+
+    <dialog id="journey-dialog" class="journey-dialog">
+      <form method="dialog" class="journey-form">
+        <div class="dialog-head">
+          <div>
+            <h3>Mood journey</h3>
+            <p>Choose the mood shift and NextTrack will build the transition for you.</p>
+          </div>
+          <button class="icon-close" value="cancel" aria-label="Close">x</button>
+        </div>
+
+        <label class="field">
+          <span>Current mood</span>
+          <select id="journey-current"></select>
+        </label>
+
+        <label class="field">
+          <span>Target mood</span>
+          <select id="journey-target"></select>
+        </label>
+
+        <label class="field">
+          <span>Transition intensity</span>
+          <select id="journey-intensity">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+
+        <div class="dialog-actions">
+          <button class="ghost-button" value="cancel">Cancel</button>
+          <button id="start-journey" type="button" class="primary-button">Create journey</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
